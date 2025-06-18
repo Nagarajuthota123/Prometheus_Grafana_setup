@@ -6,7 +6,7 @@ This guide outlines the step-by-step process to set up **Prometheus** and **Graf
 
 ## 🚀 Prerequisites
 
-- AWS account with access to launch EC2 instances.
+- AWS account with access to launch 2 EC2 instances.
 - EC2 instance running **Amazon Linux 2** (t2.micro or higher recommended).
 - Open the following **inbound ports** in the Security Group:
   - `9090` – Prometheus
@@ -26,19 +26,8 @@ This guide outlines the step-by-step process to set up **Prometheus** and **Graf
 
 ## 📦 2. Install Prometheus and Node Exporter
 
-Use the provided `prometheus.sh` script or follow these manual steps:
+Use the provided `prometheus.sh, grafana, node_exporter scripts:
 
-```bash
-sudo yum update -y
-sudo yum install -y prometheus2 node_exporter
-rpm -qi prometheus2
-Start the services:
-sudo systemctl start prometheus
-sudo systemctl start node_exporter
-sudo systemctl enable prometheus
-sudo systemctl enable node_exporter
-sudo systemctl status prometheus
-sudo systemctl status node_exporter
 🌐 3. Verify Dashboards
 Open these URLs in your browser using your EC2's public IP:
 
@@ -66,13 +55,7 @@ Go to Status → Targets to verify node_exporter is listed and "up".
 
 Try a query like node_cpu_seconds_total in the "Graph" tab and click Execute.
 
-📥 6. Install Grafana
-You can use a shell script (grafana.sh), then run the following commands manually:
-sudo yum install grafana -y
-sudo systemctl start grafana-server
-sudo systemctl enable grafana-server
-sudo systemctl status grafana-server
-📊 7. Access Grafana Dashboard
+📊 6. Access Grafana Dashboard
 Open Grafana in your browser:
 
 http://<EC2_PUBLIC_IP>:3000
